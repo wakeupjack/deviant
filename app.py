@@ -8,7 +8,7 @@ import datetime
 import io
 
 # --- KONFIGURASI HALAMAN WEB ---
-st.set_page_config(page_title="Kemendikbud Scraper", page_icon="🏫", layout="centered")
+st.set_page_config(page_title="Kemendikbud Scraper", page_icon="", layout="centered")
 
 # --- CSS BIAR CANTIK (OPSIONAL) ---
 st.markdown("""
@@ -109,14 +109,14 @@ async def run_scraping(urls_input, progress_bar, status_text):
 
 # --- TAMPILAN USER INTERFACE (UI) ---
 st.title(" Kemendikbud Data Downloader")
-st.markdown("Masukkan Link Kecamatan dari web *referensi.data.kemendikdasmen.go.id* (cuma bisa dari situ aja ya, blm bisa web lain).")
+st.markdown("Masukkan Link Kecamatan dari web *referensi.data.kemendikdasmen.go.id* bisa lebih tambahin koma (cuma bisa dari situ aja ya, blm bisa yg lain).")
 
 # Input Form
 with st.form("scraper_form"):
     url_input = st.text_area("masukin linknya disini kak", 
                              placeholder="https://referensi.data.kemendikdasmen.go.id/pendidikan/dikdas/020523/3/jf/6",
                              height=100)
-    submitted = st.form_submit_button(" Mulai ")
+    submitted = st.form_submit_button(" Mulai")
 
 if submitted and url_input:
     progress_bar = st.progress(0)

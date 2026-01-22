@@ -108,15 +108,15 @@ async def run_scraping(urls_input, progress_bar, status_text):
         return results
 
 # --- TAMPILAN USER INTERFACE (UI) ---
-st.title("🏫 Kemendikbud Data Downloader")
-st.markdown("Masukkan Link Kecamatan dari web *referensi.data.kemendikdasmen.go.id* untuk download Excel otomatis.")
+st.title(" Kemendikbud Data Downloader")
+st.markdown("Masukkan Link Kecamatan dari web *referensi.data.kemendikdasmen.go.id* (cuma bisa dari situ aja ya, blm bisa web lain).")
 
 # Input Form
 with st.form("scraper_form"):
-    url_input = st.text_area("Link Kecamatan (Bisa banyak, pisahkan dengan koma)", 
+    url_input = st.text_area("masukin linknya disini kak", 
                              placeholder="https://referensi.data.kemendikdasmen.go.id/pendidikan/dikdas/020523/3/jf/6",
                              height=100)
-    submitted = st.form_submit_button("🚀 Mulai Scraping")
+    submitted = st.form_submit_button(" Mulai ")
 
 if submitted and url_input:
     progress_bar = st.progress(0)
@@ -143,12 +143,12 @@ if submitted and url_input:
         excel_data = output.getvalue()
         
         # Tampilkan Sukses & Tombol Download
-        status_text.success(f"🎉 Selesai! Berhasil mengambil {len(df)} data sekolah.")
+        status_text.success(f"Selesai! Berhasil mengambil {len(df)} data sekolah.")
         st.download_button(
-            label="📥 Download Excel",
+            label=" Download Excel",
             data=excel_data,
             file_name=f"Data_Sekolah_{datetime.datetime.now().strftime('%H%M%S')}.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
     else:
-        status_text.error("❌ Tidak ada data ditemukan atau Link salah.")
+        status_text.error("salah kak")
